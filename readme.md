@@ -21,5 +21,7 @@ Dando continuidade aos estudos anteriores viu-se a necesidade de criação de um
 
 # 📌 Aplicando Hereditariedade para as classes
 
-# 📌 Criando a classe pai `Pessoa`
+## 📌 Criando a classe pai `Pessoa`
 Visto a necessidade foi criada a classe pai pesso a qual foi extendida pelas classes filhas utilizando o conceito de herença para otimizar o processo, evitando a duplicação necessária e adicionando mais camadas de proteção com modificador de acesso protected e a utilizando do parent no construtor para pegar as propriedades da classe pai.
+
+## 📌 Aplicando a estrutura de pasta para pasta para melhor organização 

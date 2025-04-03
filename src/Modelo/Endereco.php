@@ -1,6 +1,8 @@
 <?php
 
-final class Endereco 
+namespace Estudo\Banco\Modelo;
+
+class Endereco 
 
 {
     private string $cep;
@@ -44,6 +46,12 @@ final class Endereco
     public function getestado(): string
     {
         return $this->estado;
+    }
+
+
+    public function getEnderecoCompleto(): string 
+    {
+        return $this->rua . ", " . $this->numero . ", " . $this->bairro . ", " . $this->cidade . ", " . $this->estado . ", " . $this->cep;
     }
 
 

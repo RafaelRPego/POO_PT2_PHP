@@ -1,9 +1,19 @@
 <?php
-require_once 'src/Conta.php';
-require_once 'src/Pessoa.php';
-require_once 'src/Endereco.php';
-require_once 'src/Titular.php';
-require_once 'src/CPF.php';
+
+spl_autoload_register(function (string $nomeCompletoDaClasse){
+    $caminhoArquivo = str_replace('Estudo\\Banco', 'src', $nomeCompletoDaClasse);
+    $caminhoArquivo = str_replace('\\', DIRECTORY_SEPARATOR, $caminhoArquivo);
+    $caminhoArquivo .= '.php';
+    
+    if (file_exists($caminhoArquivo)) {
+        require_once $caminhoArquivo;
+    }
+});
+
+use Estudo\Banco\Modelo\Conta\Conta;
+use Estudo\Banco\Modelo\Conta\Titular;
+use Estudo\Banco\Modelo\Endereco;
+use Estudo\Banco\Modelo\CPF;
 
 $endereco = new Endereco('35030-678', '1527', 'Av. Erasmo Carlos', 'Bairro Santo Expedito', 'Iracema', 'MG');
 $kirvara = new Titular(new Cpf ('809.178.840-19'), 'Kirvara Santos', $endereco);
@@ -17,7 +27,7 @@ $cpfLevi = new Cpf('736.709.400-90');
 $Levi = new Titular($cpfLevi, 'Levi Castro', $endereco);
 $secondAccount = new Conta($Levi);
 echo $secondAccount->getTitular()->getNome() . PHP_EOL;
-echo $secondAccount->getTitular()->getCpf() . PHP_EOL;
+echo $secondAccount->getTitular()->getEndereco()->getEnderecoCompleto(). PHP_EOL;
 echo $secondAccount->deposita(5000) . PHP_EOL;
 echo $secondAccount->saca(1000) . PHP_EOL;
 echo "Saldo atual da conta {$secondAccount->getSaldo()}" . PHP_EOL;

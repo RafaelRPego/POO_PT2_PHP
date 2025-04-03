@@ -1,5 +1,8 @@
 <?php
 
+namespace Estudo\Banco\Modelo;
+use InvalidArgumentException;
+
 class CPF
 {
     private string $cpfnumero;

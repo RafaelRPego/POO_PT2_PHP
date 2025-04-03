@@ -1,5 +1,9 @@
 <?php
 
+namespace Estudo\Banco\Modelo;
+
+use InvalidArgumentException;
+
 class Pessoa
 {
     protected string $nome;
