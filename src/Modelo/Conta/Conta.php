@@ -2,10 +2,10 @@
 
 namespace Estudo\Banco\Modelo\Conta;
 
-class Conta
+abstract class Conta
 {
     private $titular;
-    private float $saldo;
+    protected float $saldo;
 
     private static $numeroDeContas = 0;
 
@@ -25,14 +25,18 @@ class Conta
 
     public function saca(float $valorSaque)
     {
+      
+        $taxaSaque = $this->percentualTaxaSaque($valorSaque);
+       
+        $valorSacado = $valorSaque + $taxaSaque;
 
-        if ($valorSaque > $this->saldo) {
+        if ($valorSacado > $this->saldo) {
             return "Saldo insuficiente para saque.";
         }
 
-        $this->saldo -= $valorSaque;
+        $this->saldo -= $valorSacado;
 
-        return "Saque de R$ {$valorSaque} realizado com sucesso. Saldo atual: R$ {$this->saldo}.";
+        return "Saque de R$ {$valorSaque} realizado com sucesso, taxa de R$ {$taxaSaque} aplicada. Saldo atual: R$ {$this->saldo}.";
     }
 
     public function deposita(float $valorDeposito)
@@ -44,18 +48,6 @@ class Conta
         $this->saldo += $valorDeposito;
 
         return "Depósito de R$ {$valorDeposito} realizado com sucesso. Saldo atual: R$ {$this->saldo}.";
-    }
-
-    public function transfere(float $valorTransferencia, Conta $contaDestino)
-    {
-        if ($valorTransferencia > $this->saldo) {
-            return "Saldo insuficiente para transferência.";
-        }
-
-        $this->saca($valorTransferencia);
-        $contaDestino->deposita($valorTransferencia);
-
-        return "Transferência de R$ {$valorTransferencia} realizada com sucesso. Saldo atual: R$ {$this->saldo}.";
     }
 
     public function getSaldo(): float
@@ -72,4 +64,7 @@ class Conta
     {
         return $this->titular;
     }
+
+    abstract protected function percentualTaxaSaque(float $valorSaque);
+
 }
