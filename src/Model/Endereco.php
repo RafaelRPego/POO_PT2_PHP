@@ -2,9 +2,11 @@
 
 namespace Estudo\Banco\Model;
 
-class Endereco 
+final class Endereco
 
 {
+    use AcessaPropriedades;
+
     private string $cep;
     private string $numero;
     private string $rua;
@@ -13,7 +15,8 @@ class Endereco
     private string $estado;
 
 
-    public function __construct(string $cep, string $numero, string $rua, string $bairro, string $cidade, string $estado){
+    public function __construct(string $cep, string $numero, string $rua, string $bairro, string $cidade, string $estado)
+    {
 
         $this->cep    = $cep;
         $this->rua    = $rua;
@@ -21,8 +24,8 @@ class Endereco
         $this->bairro = $bairro;
         $this->cidade = $cidade;
         $this->estado = $estado;
-    } 
-    
+    }
+
     public function getcep(): string
     {
         return $this->cep;
@@ -49,14 +52,19 @@ class Endereco
     }
 
 
-    public function getEnderecoCompleto(): string 
+    public function getEnderecoCompleto(): string
     {
         return $this->rua . ", " . $this->numero . ", " . $this->bairro . ", " . $this->cidade . ", " . $this->estado . ", " . $this->cep;
     }
 
+    public function __toString(): string
+    {
+        return "{$this->rua}, {$this->numero}, {$this->bairro}, {$this->cidade}, {$this->estado}, {$this->cep}";
+    }
 
-    
+    public function __set(string $nomeAtributo, $valor)
+    {
+        $metodo = 'set' . ucfirst($nomeAtributo);
+        return $this->$metodo($valor);
+    }
 }
-
-   
-

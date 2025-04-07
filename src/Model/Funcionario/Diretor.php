@@ -2,7 +2,9 @@
 
 namespace Estudo\Banco\Model\Funcionario;
 
-Class Diretor extends Funcionario
+use Estudo\Banco\Model\Autenticavel;
+
+Class Diretor extends Funcionario implements Autenticavel
 {
    
 public function calculaBonificacao(): float
@@ -13,7 +15,7 @@ public function calculaBonificacao(): float
 
 public function realizaAutenticação(string $senha): bool
 {
-    return $senha === '1234';
+    return $senha == '1234';
 }
 
 }

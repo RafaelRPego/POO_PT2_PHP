@@ -3,8 +3,9 @@
 namespace Estudo\Banco\Model;
 use InvalidArgumentException;
 
-class CPF
+final class CPF
 {
+    use AcessaPropriedades;
     private string $cpfnumero;
 
     public function __construct(string $cpfnumero)

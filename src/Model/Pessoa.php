@@ -4,8 +4,9 @@ namespace Estudo\Banco\Model;
 
 use InvalidArgumentException;
 
-class Pessoa
+abstract class Pessoa
 {
+    use AcessaPropriedades;
     protected string $nome;
     private $cpf;
     private $endereco;
@@ -17,7 +18,6 @@ class Pessoa
         $this->nome = $nome;
         $this->cpf = $cpf;
         $this->endereco = $endereco;
-       
     }
 
     public function getNome(): string
@@ -36,7 +36,7 @@ class Pessoa
     }
 
 
-    protected function validateNome(string $nome): void
+    final protected function validateNome(string $nome): void
     {
         if (empty($nome)) {
             throw new InvalidArgumentException("Nome inválido.");
