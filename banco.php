@@ -2,12 +2,8 @@
 
 require_once 'autoload.php';
 
-use Estudo\Banco\Modelo\Conta\Conta;
-use Estudo\Banco\Modelo\Conta\ContaCorrente;
-use Estudo\Banco\Modelo\Conta\ContaPoupanca;
-use Estudo\Banco\Modelo\Conta\Titular;
-use Estudo\Banco\Modelo\Endereco;
-use Estudo\Banco\Modelo\CPF;
+use Estudo\Banco\Model\Conta\{Conta,ContaCorrente,ContaPoupanca,Titular};
+use Estudo\Banco\Model\{Endereco, CPF};
 
 $endereco = new Endereco('35030-678', '1527', 'Av. Erasmo Carlos', 'Bairro Santo Expedito', 'Iracema', 'MG');
 $kirvara = new Titular(new Cpf ('809.178.840-19'), 'Kirvara Santos', $endereco);

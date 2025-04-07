@@ -1,9 +1,9 @@
 <?php
 
-namespace Estudo\Banco\Modelo\Conta;
-use Estudo\Banco\Modelo\Pessoa;
-use Estudo\Banco\Modelo\Endereco;
-use Estudo\Banco\Modelo\CPF;
+namespace Estudo\Banco\Model\Conta;
+use Estudo\Banco\Model\Pessoa;
+use Estudo\Banco\Model\Endereco;
+use Estudo\Banco\Model\CPF;
 
 class Titular Extends Pessoa
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Estudo\Banco\Modelo\Conta;
+namespace Estudo\Banco\Model\Conta;
 
 
 Class ContaPoupanca extends Conta

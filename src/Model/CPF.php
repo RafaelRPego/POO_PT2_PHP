@@ -1,6 +1,6 @@
 <?php
 
-namespace Estudo\Banco\Modelo;
+namespace Estudo\Banco\Model;
 use InvalidArgumentException;
 
 class CPF
